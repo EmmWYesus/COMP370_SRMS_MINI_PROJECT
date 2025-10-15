@@ -4,13 +4,13 @@ public class Client {
         BackupServer backup = new BackupServer();
         Monitor monitor = new Monitor(primary, backup);
 
-        System.out.println("\n=== System Starting ===");
+        System.out.println("\n System Starting");
         monitor.checkServers(true); // Primary is alive initially
 
         Server active = monitor.getActiveServer();
         active.processRequest("Get user data");
 
-        System.out.println("\n--- Simulating Primary Failure ---");
+        System.out.println("\n Simulating Primary Failure");
         monitor.checkServers(false); // Primary fails
 
         active = monitor.getActiveServer();
