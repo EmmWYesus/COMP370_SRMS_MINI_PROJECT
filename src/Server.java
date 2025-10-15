@@ -1,6 +1,7 @@
 public class Server {
     protected String name;
     protected boolean isActive;
+    
     public Server(String name) {
         this.name = name;
         this.isActive = false;
