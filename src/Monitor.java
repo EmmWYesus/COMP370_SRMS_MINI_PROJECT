@@ -1,6 +1,7 @@
 public class Monitor {
     private PrimaryServer primary;
     private BackupServer backup;
+    
     public Monitor(PrimaryServer primary, BackupServer backup) {
         this.primary = primary;
         this.backup = backup;
