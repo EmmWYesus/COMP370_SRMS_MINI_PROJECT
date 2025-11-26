@@ -1,16 +1,12 @@
 package mproject2;
 
 public class PrimaryServer extends ServerType {
-    public PrimaryServer() {
-        super("Primary Server");
+    public PrimaryServer(String host, int port) {
+        super(host, port, "Primary Server");
     }
 
     @Override
-    public void handleRequest(String request) {
-        if (isActive) {
-            System.out.println(name + " processed request: " + request);
-        } else {
-            System.out.println(name + " cannot process request (inactive).");
-        }
+    public void handleRequest() {
+        System.out.println(name + " handling client request...");
     }
 }
