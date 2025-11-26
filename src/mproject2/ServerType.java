@@ -4,19 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ServerType {
+    protected String host;
+    protected int port;
+    protected String status;
     protected String name;
-    protected boolean isActive;
+
     private final List<Observer> observers = new ArrayList<>();
 
-    public ServerType(String name) {
+    public ServerType(String host, int port, String name) {
+        this.host = host;
+        this.port = port;
         this.name = name;
-        this.isActive = false;
+        this.status = "ACTIVE";
     }
 
-    public String getName() { return name; }
-    public boolean isActive() { return isActive; }
-
-    public void addObserver(Observer o) { observers.add(o); }
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
 
     protected void notifyObservers(String message) {
         for (Observer o : observers) {
@@ -24,17 +28,14 @@ public abstract class ServerType {
         }
     }
 
-    public void activate() {
-        isActive = true;
-        System.out.println(name + " is now ACTIVE.");
-        notifyObservers(name + " is now ACTIVE");
+    public void simulateFailure() {
+        this.status = "FAILED";
+        notifyObservers(name + " has failed!");
     }
 
-    public void deactivate() {
-        isActive = false;
-        System.out.println(name + " is now INACTIVE.");
-        notifyObservers(name + " is now INACTIVE");
-    }
+    public String getName() { return name; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
-    public abstract void handleRequest(String request);
+    public abstract void handleRequest();
 }
