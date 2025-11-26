@@ -1,3 +1,4 @@
+package mproject1;
 public class Server {
     protected String name;
     protected boolean isActive;
