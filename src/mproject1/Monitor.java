@@ -1,3 +1,4 @@
+package mproject1;
 public class Monitor {
     private PrimaryServer primary;
     private BackupServer backup;
