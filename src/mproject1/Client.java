@@ -1,3 +1,4 @@
+package mproject1;
 public class Client {
     public static void main(String[] args) {
         PrimaryServer primary = new PrimaryServer();
